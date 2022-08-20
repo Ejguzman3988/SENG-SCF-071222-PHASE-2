@@ -23,11 +23,7 @@
 
 - Renders the text `Header`
 
-#### 3. Create a `ProjectForm` component that:
-
-- Renders the text `ProjectForm`
-
-#### 4. Define a `ProjectList` component that:
+#### 3. Define a `ProjectList` component that:
 
 - Accepts the props provided to the component
 
@@ -39,7 +35,7 @@
 
   - Provide each `project` object as a prop named `project`
 
-#### 5. Define a `ProjectListItem` component that:
+#### 4. Define a `ProjectListItem` component that:
 
 - Accepts the props argument
 
