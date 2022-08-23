@@ -1,5 +1,16 @@
+import Header from "./components/Header";
+import ProjectList from "./components/ProjectList";
+
 function App() {
-  return <div className="App">Project showcase</div>;
+  //JSX stands for JavaScript XML. JSX allows us to write HTML in React.
+  return (
+    <div className="App">
+      <Header />
+      <ProjectList />
+
+      {/* {Header()} */}
+    </div>
+  );
 }
 
 export default App;
