@@ -14,7 +14,8 @@ export const createFakeImageData = () => {
     'Web Design',
   ]
                               // [{},{},{}] => []
-  const fiftyRandomImageObjs = new Array(50).fill({}).map(() => ({
+  const fiftyRandomImageObjs = new Array(50).fill({}).map((_, index) => ({
+    id: index+1,
     user: faker.internet.userName(),
     img_url: faker.image.abstract(1234, 2345, true),
     tags: faker.helpers.arrayElements(allTags), // returns an array of random elements

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import ImageForm from './ImageForm'
 import ImagePreview from './ImagePreview'
 
-function NewImagePage({ setImages }) {
+function NewImagePage({ setLoading, setImages }) {
   const [formData, setFormData] = useState({
     user: "",
     img_url: "",
@@ -30,7 +30,7 @@ function NewImagePage({ setImages }) {
   return (
     <div>
       <h3>NewImagePage</h3>
-      <ImageForm setImages={setImages} formData={formData} handleChange={handleChange} />
+      <ImageForm setLoading={setLoading} setImages={setImages} formData={formData} handleChange={handleChange} />
       <ImagePreview formData={formData} />
     </div>
   )
