@@ -32,14 +32,14 @@ function App() {
 
 
   /// MOST IMPORTANT =======================================
-  useEffect(() => {
-    fetch(`http://localhost:4000/images`)
-      .then(r => r.json())
-      .then(data => { 
-        setImages(data)
-        setLoading(false)
-      })
-  }, [])
+  // useEffect(() => {
+  //   fetch(`http://localhost:4000/images`)
+  //     .then(r => r.json())
+  //     .then(data => { 
+  //       setImages(data)
+  //       setLoading(false)
+  //     })
+  // }, [])
   /// MOST IMPORTANT =======================================
 
   useEffect(()=>{
