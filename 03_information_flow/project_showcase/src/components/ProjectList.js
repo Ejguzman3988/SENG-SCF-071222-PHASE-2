@@ -1,17 +1,13 @@
 import { useState } from 'react';
 import ProjectListItem from "./ProjectListItem";
 
-const ProjectList = ({ projects }) => {
+const ProjectList = ({ projects, handleSearch }) => {
 
-  const [searchQuery, setSearchQuery] = useState("")
+  
 
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value)
-  }
+  
 
-  const searchResults = projects.filter(project => {
-    return project.name.toLowerCase().includes(searchQuery.toLowerCase())
-  })
+  
 
   const renderProjects = (projects) => {
     return projects.map(project => (
@@ -40,7 +36,7 @@ const ProjectList = ({ projects }) => {
         onChange={handleSearch}
       />
 
-      <ul className="cards">{renderProjects(searchResults)}</ul>
+      <ul className="cards">{renderProjects(projects)}</ul>
     </section>
   );
 };
