@@ -1,0 +1,25 @@
+.filterBar{
+  display: flex;
+  justify-content: center;
+}
+input{
+  width: 66%;
+  margin-bottom: 10px;
+}
+
+.cards{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card{
+  border: black double;
+}
+
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
