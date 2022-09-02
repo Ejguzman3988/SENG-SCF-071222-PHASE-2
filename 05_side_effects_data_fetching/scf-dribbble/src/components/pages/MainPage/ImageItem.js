@@ -12,6 +12,11 @@ function ImageItem({ user, likes, views, imgUrl }) {
         </div>
         <div>Likes: {likes}</div>
         <div>Views: {views}</div>
+        <span>
+          <button>likes</button>
+          <button>edit</button>
+          <button>delete</button>
+        </span>
       </section>
     </div>
   )

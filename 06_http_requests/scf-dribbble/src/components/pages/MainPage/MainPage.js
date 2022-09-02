@@ -4,7 +4,7 @@ import ImageList from "./ImageList"
 
 
 
-function MainPage({ searchQuery, setSearchQuery, setTag, images, setImages }){
+function MainPage({ handleDeleteClick, handleEditClick, setPage, setSearchQuery, setTag, images, setImages }){
 
 
   const [deSearch, setDeSearch] = useState("")
@@ -35,7 +35,7 @@ function MainPage({ searchQuery, setSearchQuery, setTag, images, setImages }){
     <div>
       <h3>MainPage</h3>
       <FilterBar setTag={setTag} searchQuery={deSearch} handleChange={handleChange} />
-      <ImageList images={images} setImages={setImages} />
+      <ImageList  setImages={setImages} handleDeleteClick={handleDeleteClick} handleEditClick={handleEditClick} setPage={setPage} images={images} />
     </div>
   )
 }

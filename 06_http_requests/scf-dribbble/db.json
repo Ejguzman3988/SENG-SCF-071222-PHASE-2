@@ -2,68 +2,16 @@
   "images": [
     {
       "id": 1,
-      "user": "Emilia30",
+      "user": "Emillia",
       "img_url": "https://loremflickr.com/1234/2345/abstract?15260",
       "tags": [
         "Mobile",
         "Branding",
         "Web Design",
-        "Typography"
+        "Typograp"
       ],
       "views": 997,
-      "likes": 73
-    },
-    {
-      "id": 2,
-      "user": "Halle_Reichel88",
-      "img_url": "https://loremflickr.com/1234/2345/abstract?84279",
-      "tags": [
-        "Animation"
-      ],
-      "views": 738,
-      "likes": 75
-    },
-    {
-      "id": 3,
-      "user": "Jovany85",
-      "img_url": "https://loremflickr.com/1234/2345/abstract?84370",
-      "tags": [
-        "Mobile",
-        "Product",
-        "Print",
-        "Illustration",
-        "Branding",
-        "Web Design",
-        "Animation"
-      ],
-      "views": 984,
-      "likes": 68
-    },
-    {
-      "id": 4,
-      "user": "Sabrina22",
-      "img_url": "https://loremflickr.com/1234/2345/abstract?41983",
-      "tags": [
-        "Animation",
-        "Mobile",
-        "Typography",
-        "Web Design",
-        "Illustration",
-        "Print",
-        "Product"
-      ],
-      "views": 724,
-      "likes": 36
-    },
-    {
-      "id": 5,
-      "user": "Eveline68",
-      "img_url": "https://loremflickr.com/1234/2345/abstract?7039",
-      "tags": [
-        "Print"
-      ],
-      "views": 202,
-      "likes": 51
+      "likes": 157
     },
     {
       "id": 6,
@@ -77,7 +25,7 @@
         "Illustration"
       ],
       "views": 348,
-      "likes": 63
+      "likes": 76
     },
     {
       "id": 7,
@@ -89,7 +37,7 @@
         "Web Design"
       ],
       "views": 504,
-      "likes": 96
+      "likes": 1
     },
     {
       "id": 8,
@@ -219,7 +167,7 @@
     },
     {
       "id": 17,
-      "user": "Autumn65",
+      "user": "Autumn64",
       "img_url": "https://loremflickr.com/1234/2345/abstract?2034",
       "tags": [
         "Product",
@@ -649,39 +597,6 @@
       ],
       "views": 874,
       "likes": 66
-    },
-    {
-      "id": 50,
-      "user": "Stuart74",
-      "img_url": "https://loremflickr.com/1234/2345/abstract?29918",
-      "tags": [
-        "Animation",
-        "Product",
-        "Mobile",
-        "Branding",
-        "Web Design",
-        "Illustration",
-        "Typography",
-        "Print"
-      ],
-      "views": 752,
-      "likes": 82
-    },
-    {
-      "user": "GoodName",
-      "img_url": "https://media.tacdn.com/media/attractions-splice-spp-674x446/09/c3/33/97.jpg",
-      "tags": [
-        "eri",
-        " test",
-        " this",
-        " should",
-        " be",
-        " an",
-        " array"
-      ],
-      "views": 0,
-      "likes": 0,
-      "id": 51
     }
   ]
 }

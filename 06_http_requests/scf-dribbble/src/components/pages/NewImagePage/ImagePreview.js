@@ -5,6 +5,7 @@ function ImagePreview({formData}) {
   return (
     <div>
       <ImageItem 
+        preview={true}
         user={formData.user}
         likes={formData.likes}
         views={formData.views}

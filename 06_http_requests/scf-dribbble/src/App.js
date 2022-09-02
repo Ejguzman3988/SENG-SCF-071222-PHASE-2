@@ -10,49 +10,22 @@ import './App.css'
 function App() {
   const [page, setPage] = useState('main')
   const [loading, setLoading] = useState(true)
-  
   const [images, setImages] = useState()
   const [tag, setTag] = useState("")
-  console.log(tag)
   const [searchQuery, setSearchQuery] = useState("")
-  // Setter function:
-  // Sets the value of images
-  // ReRenders the page
-  //  setLoading(false)
-
-  // LifeCycle Methods (REACT USED CLASS COMPONENTS)
-  // WE USE FUNCTIONAL COMPONENTS SO WE DONT GET THESE
-  // SIDE EFFECTS ALLOW US SIMULATE THESE LIFE CYCLE METHODS
-  // WHAT IS THE DIFFERENCE BETWEEN FUNCTION AND CLASS COMPONENTS? 
-  // WE DONT GET ALL THE THINGS CLASS COMPONENTS GET
-
-  // 1. COMPONENT DID MOUNT (componentDidMount) useEffect(()=>{}, []) - only renders one time when the component mounts
-  // 2. COMPONENT DID UPDATE (componentDidUpdate) useEffect(()=>{}, [toggle]) - will do something every time toggle changes
-  // 3. COMPONENT WILL UNMOUNT (componentWillUnmount) useEffect(()=>{ return () => cleanUp() }, [toggle]) - Clean up function
-
-
-  /// MOST IMPORTANT =======================================
-  // useEffect(() => {
-  //   fetch(`http://localhost:4000/images`)
-  //     .then(r => r.json())
-  //     .then(data => { 
-  //       setImages(data)
-  //       setLoading(false)
-  //     })
-  // }, [])
-  /// MOST IMPORTANT =======================================
+  const [imageToEdit, setImageToEdit] = useState(null)
 
   useEffect(()=>{
     setLoading(true)
     if(searchQuery && tag){
-      fetch(`http://localhost:4000/images?tags_like=${tag}&q=${encodeURI(searchQuery)}`)
+      fetch(`http://localhost:4000/images?tags_like=${encodeURI(tag)}&q=${encodeURI(searchQuery)}`)
       .then(r => r.json())
       .then(data => { 
         setImages(data)
         setLoading(false)
       })
     }else if (tag){
-      fetch(`http://localhost:4000/images?tags_like=${tag}`)
+      fetch(`http://localhost:4000/images?tags_like=${encodeURI(tag)}`)
       .then(r => r.json())
       .then(data => { 
         setImages(data)
@@ -78,6 +51,33 @@ function App() {
   }, [tag, searchQuery])
 
 
+  const handleEditClick = (id) => {
+    const foundImage = images.find((img) => img.id === id)
+
+    setImageToEdit({
+      ...foundImage,
+      tags: foundImage.tags.join(",")
+    })
+
+    setPage("edit")
+  }
+
+  const handleDeleteClick = (id) => {
+    setLoading(true)
+    fetch(`http://localhost:4000/images/${id}`,{
+      method: "DELETE"
+    })
+      .then(r => {
+        setLoading(false)
+        return r.json()
+      })
+      .then((data) => {
+        setLoading(false)
+        setImages((images) => {
+          return images.filter((imgObj) => imgObj.id !== id)
+        })
+      })
+  }
 
 
   console.log("render")
@@ -97,16 +97,24 @@ function App() {
       <Header setPage={setPage} />
       {page === 'main' ? 
         <MainPage 
+        handleDeleteClick={handleDeleteClick}
+        setImageToEdit={setImageToEdit}
+        handleEditClick={handleEditClick}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         images={images} 
         setImages={setImages} 
         setTag={setTag}
+        setPage={setPage}
         /> 
         : 
         <NewImagePage 
+          setImageToEdit={setImageToEdit}
+          imageToEdit={imageToEdit}
           setLoading={setLoading} 
           setImages={setImages} 
+          page={page}
+          setPage={setPage}
         />}
   
     </div>

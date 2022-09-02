@@ -1,34 +1,11 @@
 import React, { useState } from 'react'
 
-function ImageForm({ setImages, formData, handleChange, setLoading }) {
+function ImageForm({ 
+  handleSubmit, 
+  formData, 
+  handleChange, 
+}) {
 
-
-
-  const handleSubmit = (e) => {
-    // REMEMBER TO SPLIT TAGS BY COMMA WHEN WE SUBMIT!!!!
-    e.preventDefault();
-    if(formData.user !== "" && formData.img_url !== "" && formData.tags !== ""){
-      setLoading(true)
-      fetch("http://localhost:4000/images", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({...formData, tags: formData.tags.split(',')})
-      })
-      .then(r => r.json())
-      .then(imageObj => { 
-        setLoading(false)
-        setImages((images) => [imageObj, ...images ])
-      })
-      
-    }else{
-      alert("PLEASE FILL OUT SOME INFO")
-    }
-  }
-
-
-  
   return (
     <form onSubmit={handleSubmit} >
       <div>

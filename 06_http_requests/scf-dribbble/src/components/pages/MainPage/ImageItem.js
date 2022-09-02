@@ -1,6 +1,42 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 
-function ImageItem({ user, likes, views, imgUrl }) {
+function ImageItem({ preview, setImages, handleDeleteClick, handleEditClick, id, user, likes, views, imgUrl }) {
+  const [loves, setLoves] = useState(likes)
+  const [deLoves, setDeLoves] = useState(likes)
+  
+  useEffect(() =>{
+    if(!preview && (loves !== likes)){
+      fetch(`http://localhost:4000/images/${id}`,{
+        method: "PATCH",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ likes: loves})
+      })
+        .then((r) => r.json())
+        .then((newImage) => setImages((images) => images.map((img) => {
+          if(img.id === newImage.id){
+            return newImage
+          }
+          return img
+        })))
+    }
+  }, [loves]) 
+
+  useEffect(() => {
+    const timerId = setTimeout(() => setLoves(deLoves), 500)
+
+    return () => clearInterval(timerId)
+  }, [deLoves])
+
+  
+  const handleLikeClick = (id) => {
+
+    setDeLoves((loves) => loves + 1)
+  }
+  
+  
+
   return (
     <div className="card">
       <figure>
@@ -10,8 +46,13 @@ function ImageItem({ user, likes, views, imgUrl }) {
         <div>
           <strong>{user}</strong>
         </div>
-        <div>Likes: {likes}</div>
+        <div>Likes: {deLoves}</div>
         <div>Views: {views}</div>
+        <span>
+          <button onClick={() => handleLikeClick(id)}>likes</button>
+          <button onClick={()=>handleEditClick(id)}>edit</button>
+          <button onClick={()=>handleDeleteClick(id)}>delete</button>
+        </span>
       </section>
     </div>
   )
