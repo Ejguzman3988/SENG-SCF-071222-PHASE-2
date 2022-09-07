@@ -1,8 +1,12 @@
 import React, {useEffect, useState} from 'react'
+import { useHistory } from "react-router-dom"
 
-function ImageItem({ preview, setImages, handleDeleteClick, handleEditClick, id, user, likes, views, imgUrl }) {
+function ImageItem({ tags=[], preview, setImages, handleDeleteClick, handleEditClick, id, user, likes, views, imgUrl }) {
   const [loves, setLoves] = useState(likes)
   const [deLoves, setDeLoves] = useState(likes)
+  let history = useHistory()
+
+  console.table(history)
   
   useEffect(() =>{
     if(!preview && (loves !== likes)){
@@ -35,12 +39,12 @@ function ImageItem({ preview, setImages, handleDeleteClick, handleEditClick, id,
     setDeLoves((loves) => loves + 1)
   }
   
-  
+  const tagSpans = tags.map((tag) => <span key={`${tag}-${id}`}> [ {tag} ]</span>)
 
   return (
     <div className="card">
       <figure>
-        <img src={imgUrl} alt={user} width="100px" height="133px"/>
+        <img onClick={() => history.push(`/images/${id}`)}src={imgUrl} alt={user} width="100px" height="133px"/>
       </figure>
       <section>
         <div>
@@ -54,6 +58,9 @@ function ImageItem({ preview, setImages, handleDeleteClick, handleEditClick, id,
           <button onClick={()=>handleDeleteClick(id)}>delete</button>
         </span>
       </section>
+      <div className="tags">
+        {tagSpans}
+      </div>
     </div>
   )
 }

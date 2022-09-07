@@ -15,6 +15,7 @@ function ImageList({ handleDeleteClick, handleEditClick, setPage, images, setIma
               likes={imgObj.likes}
               views={imgObj.views}
               imgUrl={imgObj.img_url}
+              tags={imgObj.tags}
               handleEditClick={handleEditClick}
               setImages={setImages}
             />

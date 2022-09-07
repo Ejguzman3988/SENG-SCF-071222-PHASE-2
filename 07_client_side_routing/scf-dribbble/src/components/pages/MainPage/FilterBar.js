@@ -14,7 +14,7 @@ function FilterBar({ setTag, searchQuery, handleChange }) {
     'Web Design',
   ]
 
-  const buttonTags = allTags.map((name) => <button onClick={() => name === "All" ? 
+  const buttonTags = allTags.map((name,idx) => <button key={idx+1} onClick={() => name === "All" ? 
                                                                     setTag("") :
                                                                     setTag(name)
                                                                   }>{name}</button> )

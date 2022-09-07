@@ -11,7 +11,7 @@
         "Typograp"
       ],
       "views": 997,
-      "likes": 157
+      "likes": 172
     },
     {
       "id": 6,
@@ -25,7 +25,7 @@
         "Illustration"
       ],
       "views": 348,
-      "likes": 76
+      "likes": 81
     },
     {
       "id": 7,
@@ -37,7 +37,7 @@
         "Web Design"
       ],
       "views": 504,
-      "likes": 1
+      "likes": 8
     },
     {
       "id": 8,
@@ -261,18 +261,6 @@
       "likes": 18
     },
     {
-      "id": 24,
-      "user": "Tamia.Dickinson",
-      "img_url": "https://loremflickr.com/1234/2345/abstract?73495",
-      "tags": [
-        "Product",
-        "Mobile",
-        "Animation"
-      ],
-      "views": 170,
-      "likes": 55
-    },
-    {
       "id": 25,
       "user": "Rodolfo.Pagac",
       "img_url": "https://loremflickr.com/1234/2345/abstract?28321",
@@ -483,7 +471,7 @@
         "Product"
       ],
       "views": 674,
-      "likes": 95
+      "likes": 97
     },
     {
       "id": 41,
@@ -509,7 +497,7 @@
         "Illustration"
       ],
       "views": 477,
-      "likes": 94
+      "likes": 101
     },
     {
       "id": 43,
@@ -536,7 +524,7 @@
         "Illustration"
       ],
       "views": 903,
-      "likes": 38
+      "likes": 40
     },
     {
       "id": 45,
@@ -597,6 +585,17 @@
       ],
       "views": 874,
       "likes": 66
+    },
+    {
+      "user": "Emillia",
+      "img_url": "https://media.tacdn.com/media/attractions-splice-spp-674x446/09/c3/33/97.jpg",
+      "tags": [
+        "Mobile",
+        "Branding",
+        "Web Design",
+        "Typograp"
+      ],
+      "id": 50
     }
   ]
 }

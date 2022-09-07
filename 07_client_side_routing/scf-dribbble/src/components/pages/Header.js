@@ -1,5 +1,6 @@
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Header = ({ setPage }) => {
 
@@ -8,25 +9,10 @@ const Header = ({ setPage }) => {
   return (
     <div>
       <h3>
-        <a 
-          href="_" 
-          onClick={(e) => {
-            e.preventDefault();
-            setPage('main')
-          }}
-        >
-            Main
-        </a> 
-        <br/>
-        <a 
-          href="_"
-          onClick={(e) => {
-            e.preventDefault();
-            setPage('new')
-          }}
-        >
-          New Image
-        </a>
+        <Link to="/" >Main</Link>  -  -  - 
+        <Link to="/images/new">New Image</Link> -  -  -
+        <Link to="/images/1">Go To First Image</Link> -  -  -
+        <Link to="/images/2">Go To Second Image</Link> -  -  -
       </h3>
       
 

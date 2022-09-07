@@ -4,6 +4,10 @@ import MainPage from './components/pages/MainPage/MainPage'
 import NewImagePage from './components/pages/NewImagePage/NewImagePage'
 import { SquareLoader } from 'react-spinners'
 import ImagesArray from "./data/ImagesData"
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import ErrorPage from "./components/ErrorPage"
+import ImageDetail from "./components/ImageDetail"
+
 
 import './App.css'
 
@@ -14,7 +18,6 @@ function App() {
   const [tag, setTag] = useState("")
   const [searchQuery, setSearchQuery] = useState("")
   const [imageToEdit, setImageToEdit] = useState(null)
-
   useEffect(()=>{
     setLoading(true)
     if(searchQuery && tag){
@@ -91,33 +94,47 @@ function App() {
 
   
   return (
-    <div>
-      
-      <h2>APP</h2>
-      <Header setPage={setPage} />
-      {page === 'main' ? 
-        <MainPage 
-        handleDeleteClick={handleDeleteClick}
-        setImageToEdit={setImageToEdit}
-        handleEditClick={handleEditClick}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        images={images} 
-        setImages={setImages} 
-        setTag={setTag}
-        setPage={setPage}
-        /> 
-        : 
-        <NewImagePage 
-          setImageToEdit={setImageToEdit}
-          imageToEdit={imageToEdit}
-          setLoading={setLoading} 
-          setImages={setImages} 
-          page={page}
-          setPage={setPage}
-        />}
-  
-    </div>
+    <Router>
+   
+      <div>
+        <h2>APP</h2>
+        <Header setPage={setPage} />
+        <Switch>
+          {/* http://localhost:3000/images/new */}
+          <Route exact path="/">
+            <MainPage 
+              handleDeleteClick={handleDeleteClick}
+              setImageToEdit={setImageToEdit}
+              handleEditClick={handleEditClick}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              images={images} 
+              setImages={setImages} 
+              setTag={setTag}
+              setPage={setPage}
+            /> 
+          </Route>
+
+          
+          <Route exact path="/images/new">
+            <NewImagePage 
+              setImageToEdit={setImageToEdit}
+              imageToEdit={imageToEdit}
+              setLoading={setLoading} 
+              setImages={setImages} 
+              page={page}
+              setPage={setPage}
+            />
+          </Route>
+
+          <Route path="/images/:id">
+            <ImageDetail />
+          </Route>
+
+          <Route path="*" component={ErrorPage} />
+        </Switch>
+      </div>
+    </Router>
   )
 }
 
