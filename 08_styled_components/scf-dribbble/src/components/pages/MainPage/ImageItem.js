@@ -1,10 +1,22 @@
 import React, {useEffect, useState} from 'react'
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom"
+import styled from 'styled-components'
 
-function ImageItem({ preview, setImages, handleDeleteClick, handleEditClick, id, user, likes, views, imgUrl }) {
+function ImageItem({ tags=[], preview, setImages, handleDeleteClick, handleEditClick, id, user, likes, views, imgUrl }) {
   const [loves, setLoves] = useState(likes)
   const [deLoves, setDeLoves] = useState(likes)
-  let  history = useHistory()
+  let history = useHistory()
+
+  const Card = styled.div`
+    border: var(--secondary) double;
+    width: 250px;
+  `
+
+  const Tags = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+  `
+  
   useEffect(() =>{
     if(!preview && (loves !== likes)){
       fetch(`http://localhost:4000/images/${id}`,{
@@ -36,12 +48,12 @@ function ImageItem({ preview, setImages, handleDeleteClick, handleEditClick, id,
     setDeLoves((loves) => loves + 1)
   }
   
-  
+  const tagSpans = tags.map((tag) => <span key={`${tag}-${id}`}> [ {tag} ]</span>)
 
   return (
-    <div className="card">
+    <Card>
       <figure>
-        <img onClick={() => history.push(`/images/${id}`)} src={imgUrl} alt={user} width="100px" height="133px"/>
+        <img onClick={() => history.push(`/images/${id}`)}src={imgUrl} alt={user} width="100px" height="133px"/>
       </figure>
       <section>
         <div>
@@ -55,7 +67,10 @@ function ImageItem({ preview, setImages, handleDeleteClick, handleEditClick, id,
           <button onClick={()=>handleDeleteClick(id)}>delete</button>
         </span>
       </section>
-    </div>
+      <Tags>
+        {tagSpans}
+      </Tags>
+    </Card>
   )
 }
 

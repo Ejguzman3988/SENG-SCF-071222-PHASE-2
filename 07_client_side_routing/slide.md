@@ -52,10 +52,10 @@ What URLs do we want our application to have to simulate the feeling of differen
 | --------------- | ------------------ |
 | Home            | / (root route)     |
 | About           | /about             |
-| ProjectForm     | /projects/new      |
-| ProjectEditForm | /projects/:id/edit |
-| ProjectDetail   | /projects/:id      |
-| ProjectList     | /projects          |
+| ImageForm     | /images/new      |
+| ImageEditForm | /images/:id/edit |
+| ImageDetail   | /images/:id      |
+| ImageList     | /images          |
 
 <!-- slide style="text-align: left;" -->
 
@@ -121,15 +121,15 @@ return (
       <Home />
       <About />
       {renderForm()}
-      <ProjectList
-        projects={projects}
-        onEditProject={onEditProject}
-        onDeleteProject={onDeleteProject}
+      <ImageList
+        images={images}
+        onEditImage={onEditImage}
+        onDeleteImage={onDeleteImage}
         setSelectedPhase={setSelectedPhase}
         setSearchQuery={setSearchQuery}
       />
       <Home />
-      <ProjectDetail />
+      <ImageDetail />
     </Switch>
   </div>
 );
@@ -157,17 +157,17 @@ return (
       <Route exact path="/">
         <Home />
       </Route>
-      <Route path="/projects/new">
-        <ProjectForm onAddProject={onAddProject} />
+      <Route path="/images/new">
+        <ImageForm onAddImage={onAddImage} />
       </Route>
-      <Route path="/projects/:id/edit">
-        <ProjectEditForm onUpdateProject={onUpdateProject} />
+      <Route path="/images/:id/edit">
+        <ImageEditForm onUpdateImage={onUpdateImage} />
       </Route>
-      <Route path="/projects/:id">
-        <ProjectDetail />
+      <Route path="/images/:id">
+        <ImageDetail />
       </Route>
-      <Route path="/projects">
-        <ProjectList projects={projects} onDeleteProject={onDeleteProject} />
+      <Route path="/images">
+        <ImageList images={images} onDeleteImage={onDeleteImage} />
       </Route>
     </Switch>
   </div>
@@ -199,15 +199,15 @@ return (
       <Link to="/" style={{ borderBottom: "none" }}>
         <h1 className="branding">
           <span className="logo">{"//"}</span>
-          Project Showcase
+          Image Showcase
         </h1>
       </Link>
       <div className="navigation">
-        <Link className="button" to="/projects">
-          All Projects
+        <Link className="button" to="/images">
+          All Images
         </Link>
-        <Link className="button" to="/projects/new">
-          Add Project
+        <Link className="button" to="/images/new">
+          Add Image
         </Link>
         <button onClick={onToggleDarkMode}>{buttonTextContent}</button>
       </div>
